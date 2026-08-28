@@ -141,6 +141,15 @@ const StyledWrapper = styled.div`
       transform-animation 2s infinite alternate,
       opacity-animation 4s infinite;
 
+    -webkit-animation:
+      transform-animation 2s infinite alternate,
+      opacity-animation 4s infinite;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+
     animation-timing-function:
       cubic-bezier(0.6, 0.8, 0.5, 1);
   }
@@ -274,3 +283,6 @@ const StyledWrapper = styled.div`
     }
   }
 `;
+
+
+
