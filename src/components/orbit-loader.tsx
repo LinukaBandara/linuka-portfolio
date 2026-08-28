@@ -2,13 +2,11 @@
 import styled from "styled-components";
 
 export const OrbitLoader = () => {
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  // Render the loader immediately so Safari doesn't paint the Hero
+  // before React mounts the loading overlay.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-    setVisible(true);
-
     const timer = window.setTimeout(() => {
       setVisible(false);
     }, 2500);
@@ -16,7 +14,7 @@ export const OrbitLoader = () => {
     return () => window.clearTimeout(timer);
   }, []);
 
-  if (!mounted || !visible) return null;
+  if (!visible) return null;
 
   return (
     <StyledWrapper>
@@ -52,20 +50,10 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /*
-     * React Bits original proportions
-     */
     width: 180px;
     height: 180px;
-
     margin: 2rem;
     user-select: none;
-
-    /*
-     * Original component uses scale: 2.
-     * This makes both the beam and text substantially larger.
-     */
     transform: scale(2);
   }
 
@@ -73,10 +61,8 @@ const StyledWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     z-index: 1;
     background-color: transparent;
 
@@ -91,11 +77,9 @@ const StyledWrapper = styled.div`
 
   .loader::after {
     content: "";
-
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
 
@@ -133,10 +117,6 @@ const StyledWrapper = styled.div`
       black 25%
     );
 
-    /*
-     * Original React Bits movement.
-     * Two independent animations create the smooth sweeping light.
-     */
     animation:
       transform-animation 2s infinite alternate,
       opacity-animation 4s infinite;
@@ -157,7 +137,6 @@ const StyledWrapper = styled.div`
   .loader-content {
     position: relative;
     z-index: 3;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,29 +148,16 @@ const StyledWrapper = styled.div`
       "JetBrains Mono",
       monospace;
 
-    /*
-     * Bigger than your previous 16px.
-     * The 2x wrapper scale makes the final visual size large.
-     */
     font-size: 16px;
-
     font-weight: 600;
-
     letter-spacing: 0.24em;
-
     text-transform: uppercase;
-
     color: rgba(167, 243, 195, 0.95);
-
     white-space: nowrap;
 
     animation:
       initializing-text 2.5s ease-in-out both;
   }
-
-  /*
-   * ORIGINAL REACT BITS BEAM MOVEMENT
-   */
 
   @keyframes transform-animation {
     0% {
@@ -218,10 +184,6 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /*
-   * INITIALIZING text animation
-   */
-
   @keyframes initializing-text {
     0% {
       opacity: 0;
@@ -244,18 +206,10 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /*
-   * MOBILE
-   *
-   * Keep the loader large like React Bits,
-   * but slightly reduce the scale so it fits comfortably.
-   */
-
   @media (max-width: 640px) {
     .loader-wrapper {
       width: 155px;
       height: 155px;
-
       transform: scale(1.75);
     }
 
@@ -265,15 +219,10 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /*
-   * VERY SMALL PHONES
-   */
-
   @media (max-width: 380px) {
     .loader-wrapper {
       width: 145px;
       height: 145px;
-
       transform: scale(1.6);
     }
 
@@ -283,6 +232,3 @@ const StyledWrapper = styled.div`
     }
   }
 `;
-
-
-
