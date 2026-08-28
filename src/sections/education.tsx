@@ -8,7 +8,10 @@ export function Education() {
         <p className="section-kicker">My education</p>
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
-            <h2 className="section-title">Still learning, always<br />building.</h2>
+            <h2 className="section-title">
+  <span className="block">Still learning, always</span>
+  <span className="block">building.</span>
+</h2>
             <p className="mt-8 max-w-xl text-sm leading-7 text-zinc-500 md:text-[15px]">
               I&apos;m completing a Higher Diploma in Computing &amp; Software Engineering at ICBT Campus,
               while continuously strengthening my full-stack, backend, database, system-design and

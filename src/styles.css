@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
   --color-bg: #020302;
@@ -113,7 +113,7 @@
 
 @media (max-width:767px) {
   .hero-shell { align-items:flex-start; min-height:auto; padding-top:88px; }
-  /* Was 23vw with a 4.1–6.9rem clamp — on 380–430px phones that made
+  /* Was 23vw with a 4.1â€“6.9rem clamp â€” on 380â€“430px phones that made
      "BANDARA" wider than the viewport, so it got sliced by overflow-hidden.
      18vw keeps the longest word inside the safe area at every mobile width. */
   .hero-title { font-size:clamp(3rem,18vw,6.9rem); line-height:.82; overflow-wrap:break-word; }
@@ -141,9 +141,26 @@
   .project-signal { left:12px; bottom:10px; }
 }
 
-@media (prefers-reduced-motion:reduce) {
-  *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-  [data-reveal] { opacity:1 !important; transform:none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-in {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 /* Scroll-reveal motion */
@@ -163,4 +180,11 @@
 @keyframes hero-in { to { opacity:1; transform:translateY(0); } }
 @media (prefers-reduced-motion:reduce) {
   .hero-in { opacity:1; transform:none; animation:none; }
+}
+
+@media (max-width: 420px) {
+  .typing-line {
+    max-width: calc(100vw - 32px);
+    white-space: nowrap;
+  }
 }

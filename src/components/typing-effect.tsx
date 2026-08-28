@@ -1,7 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 
 export function TypingEffect({
-  words = ["Problem Solver", "Full-Stack Developer", "Web Developer", "Software Engineering Student"],
+  words = [
+    "Problem Solver",
+    "Full-Stack Developer",
+    "Web Developer",
+    "Software Engineering Student",
+  ],
 }: {
   words?: string[];
 }) {
@@ -12,21 +17,31 @@ export function TypingEffect({
 
   useEffect(() => {
     if (!safeWords.length) return;
+
     const word = safeWords[wordIndex % safeWords.length];
     const finishedTyping = !deleting && text === word;
     const finishedDeleting = deleting && text === "";
 
-    const delay = finishedTyping ? 1250 : finishedDeleting ? 220 : deleting ? 42 : 78;
+    const delay = finishedTyping
+      ? 1250
+      : finishedDeleting
+        ? 220
+        : deleting
+          ? 42
+          : 78;
+
     const timer = window.setTimeout(() => {
       if (finishedTyping) {
         setDeleting(true);
         return;
       }
+
       if (finishedDeleting) {
         setDeleting(false);
         setWordIndex((i) => (i + 1) % safeWords.length);
         return;
       }
+
       setText(word.slice(0, text.length + (deleting ? -1 : 1)));
     }, delay);
 
@@ -34,8 +49,18 @@ export function TypingEffect({
   }, [deleting, safeWords, text, wordIndex]);
 
   return (
-    <span className="typing-line" aria-live="polite">
-      {text}
+    <span
+      className="typing-line"
+      aria-live="polite"
+      style={{
+        whiteSpace: "nowrap",
+        display: "inline-flex",
+        maxWidth: "100%",
+        overflow: "hidden",
+        verticalAlign: "middle",
+      }}
+    >
+      <span style={{ whiteSpace: "pre" }}>{text}</span>
       <span className="typing-caret" aria-hidden="true" />
     </span>
   );

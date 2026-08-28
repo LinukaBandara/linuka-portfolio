@@ -17,7 +17,10 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
           <div>
             <p className="section-kicker">About me</p>
-            <h2 className="section-title">Developer, designer<br />and quick learner.</h2>
+            <h2 className="section-title">
+  <span className="block">Developer, designer</span>
+  <span className="block">and quick learner.</span>
+</h2>
             <div className="mt-8 max-w-xl space-y-5 text-sm leading-7 text-zinc-500 md:text-[15px]">
               <p>I&apos;m Linuka, a software engineering student focused on modern web applications, REST APIs, business systems and responsive digital experiences.</p>
               <p>I like taking an idea from architecture and databases through to the final interface — keeping the workflow practical, the code maintainable and the visual result polished.</p>
