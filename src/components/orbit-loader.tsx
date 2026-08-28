@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export const OrbitLoader = () => {
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-    setVisible(true);
-
     const timer = window.setTimeout(() => {
       setVisible(false);
     }, 2500);
@@ -16,7 +12,7 @@ export const OrbitLoader = () => {
     return () => window.clearTimeout(timer);
   }, []);
 
-  if (!mounted || !visible) return null;
+  if (!visible) return null;
 
   return (
     <StyledWrapper>
@@ -175,7 +171,7 @@ const StyledWrapper = styled.div`
     }
 
     .loader-text {
-      font-size: 13px;
+      font-size: 16px;
       letter-spacing: 0.2em;
     }
   }
