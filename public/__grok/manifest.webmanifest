@@ -1,0 +1,16 @@
+{
+  "name": "Linuka Bandara — Portfolio",
+  "short_name": "Linuka Bandara",
+  "description": "Software engineering student and full-stack developer portfolio.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020302",
+  "theme_color": "#080808",
+  "icons": [
+    {
+      "src": "/__grok/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
