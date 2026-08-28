@@ -1,4 +1,4 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+﻿import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
@@ -8,7 +8,7 @@ const TITLE = "Linuka Bandara — Software Engineer & Full-Stack Developer";
 const DESCRIPTION =
   "Portfolio of Linuka Bandara, a Sri Lanka-based software engineering student and full-stack developer building web apps, APIs and business systems with React, .NET and Node.js.";
 // TODO: replace with your real production domain once you deploy (used for canonical/OG URLs, sitemap, robots.txt).
-const SITE_URL = "https://linukabandara.dev";
+const SITE_URL = "https://linukabandara.vercel.app";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -94,3 +94,4 @@ export const Route = createRootRoute({
     </html>
   ),
 });
+

@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://linukabandara.dev/sitemap.xml
+Sitemap: https://linukabandara.vercel.app/sitemap.xml
