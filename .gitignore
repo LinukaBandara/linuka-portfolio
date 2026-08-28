@@ -1,13 +1,22 @@
+# dependencies
 node_modules/
+
+# build output
 dist/
-.vite/
-.grok/
-artifacts/
-attachments/
-screenshots/
-*.log
-.env
-.env.*
+build/
+
+# local environment
+.env*
 !.env.example
+
+# Vercel
+.vercel/
+
+# editor / OS
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+# screenshots
+screenshots/
