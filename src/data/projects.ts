@@ -36,7 +36,7 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "Built for a fertilizer/agrochemical business that was tracking stock in spreadsheets and losing track of what was actually on the shelf. The main challenge was designing a schema that stayed accurate under concurrent edits from multiple staff, without adding friction to a non-technical team's daily workflow. Cut stock-check time from [X minutes] to [Y minutes] per day for the client's staff. Next iteration would add low-stock alerts and a basic audit log.",
     tech: ["JavaScript", "Full Stack", "MySQL", "Inventory"],
-    live: "https://bgs-frontend-production.up.railway.app/",
+    live: "https://bgs-agri-stock.vercel.app/",
     repo: "https://github.com/linuka7/BGS-AgriStock",
     image: "/projects/bgs-agristock.jpg",
     tone: "green",
@@ -66,3 +66,4 @@ export const featuredProjects: FeaturedProject[] = [
     tone: "ember",
   },
 ];
+
