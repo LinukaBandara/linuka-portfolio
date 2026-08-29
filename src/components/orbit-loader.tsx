@@ -1,234 +1,61 @@
 ﻿import { useEffect, useState } from "react";
-import styled from "styled-components";
 
+// Plain CSS classes defined in styles.css — NOT styled-components.
+// styled-components injects its CSS via JS after the page loads, so on the
+// very first paint (especially with server-side rendering) this component
+// would exist in the DOM with zero styling applied for a moment: no
+// `position: fixed`, no background. The real page shows through underneath
+// until the CSS shows up a beat later — that's the "homepage glimpse" and
+// the beam/text appearing "late" on localhost. A real <link>-based
+// stylesheet is guaranteed ready before first paint, so that race is gone.
 export const OrbitLoader = () => {
-  // Render the loader immediately so Safari doesn't paint the Hero
-  // before React mounts the loading overlay.
-  const [visible, setVisible] = useState(true);
+  const [phase, setPhase] = useState<"visible" | "leaving" | "gone">("visible");
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setVisible(false);
-    }, 2500);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-    return () => window.clearTimeout(timer);
+    const MIN_VISIBLE_MS = 1400;
+    const start = Date.now();
+    const finishLoading = () => {
+      const elapsed = Date.now() - start;
+      const remaining = Math.max(MIN_VISIBLE_MS - elapsed, 0);
+      window.setTimeout(() => setPhase("leaving"), remaining);
+    };
+
+    if (document.readyState === "complete") {
+      finishLoading();
+    } else {
+      window.addEventListener("load", finishLoading, { once: true });
+    }
+
+    // Safety net: never hold the loader forever if "load" never fires.
+    const maxTimer = window.setTimeout(() => setPhase("leaving"), 5000);
+
+    return () => {
+      window.removeEventListener("load", finishLoading);
+      window.clearTimeout(maxTimer);
+      document.body.style.overflow = prevOverflow;
+    };
   }, []);
 
-  if (!visible) return null;
+  useEffect(() => {
+    if (phase !== "leaving") return;
+    document.body.style.overflow = "";
+    const timer = window.setTimeout(() => setPhase("gone"), 500);
+    return () => window.clearTimeout(timer);
+  }, [phase]);
+
+  if (phase === "gone") return null;
 
   return (
-    <StyledWrapper>
-      <div className="loader-screen">
-        <div className="loader-wrapper">
-          <div className="loader" />
-
-          <div className="loader-content">
-            <span className="loader-text">INITIALIZING</span>
-          </div>
+    <div className={`loader-screen ${phase === "leaving" ? "loader-screen-leaving" : ""}`} aria-hidden="true">
+      <div className="loader-wrapper">
+        <div className="loader" />
+        <div className="loader-content">
+          <span className="loader-text">INITIALIZING</span>
         </div>
       </div>
-    </StyledWrapper>
+    </div>
   );
 };
-
-const StyledWrapper = styled.div`
-  .loader-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100dvh;
-    background: #020302;
-    overflow: hidden;
-  }
-
-  .loader-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 180px;
-    margin: 2rem;
-    user-select: none;
-    transform: scale(2);
-  }
-
-  .loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: transparent;
-
-    mask: repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 6px,
-      black 7px,
-      black 8px
-    );
-  }
-
-  .loader::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background-image:
-      radial-gradient(
-        circle at 50% 50%,
-        #ffffff 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 45% 45%,
-        #52df8b 0%,
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 55% 55%,
-        #22c55e 0%,
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 45% 55%,
-        #16a34a 0%,
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 55% 45%,
-        #065f46 0%,
-        transparent 45%
-      );
-
-    mask: radial-gradient(
-      circle at 50% 50%,
-      transparent 0%,
-      transparent 10%,
-      black 25%
-    );
-
-    animation:
-      transform-animation 2s infinite alternate,
-      opacity-animation 4s infinite;
-
-    -webkit-animation:
-      transform-animation 2s infinite alternate,
-      opacity-animation 4s infinite;
-
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-
-    animation-timing-function:
-      cubic-bezier(0.6, 0.8, 0.5, 1);
-  }
-
-  .loader-content {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .loader-text {
-    font-family:
-      var(--font-mono),
-      "JetBrains Mono",
-      monospace;
-
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: rgba(167, 243, 195, 0.95);
-    white-space: nowrap;
-
-    animation:
-      initializing-text 2.5s ease-in-out both;
-  }
-
-  @keyframes transform-animation {
-    0% {
-      transform: translate(-55%);
-    }
-
-    100% {
-      transform: translate(55%);
-    }
-  }
-
-  @keyframes opacity-animation {
-    0%,
-    100% {
-      opacity: 0;
-    }
-
-    15% {
-      opacity: 1;
-    }
-
-    65% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes initializing-text {
-    0% {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-
-    18% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    72% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    100% {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-  }
-
-  @media (max-width: 640px) {
-    .loader-wrapper {
-      width: 155px;
-      height: 155px;
-      transform: scale(1.75);
-    }
-
-    .loader-text {
-      font-size: 17px;
-      letter-spacing: 0.2em;
-    }
-  }
-
-  @media (max-width: 380px) {
-    .loader-wrapper {
-      width: 145px;
-      height: 145px;
-      transform: scale(1.6);
-    }
-
-    .loader-text {
-      font-size: 16px;
-      letter-spacing: 0.18em;
-    }
-  }
-`;

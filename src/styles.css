@@ -188,3 +188,123 @@
     white-space: nowrap;
   }
 }
+
+
+/* Boot loader — plain CSS on purpose, not styled-components. This has to be
+   visible from the very first paint, before any JS runs or hydrates. See
+   the comment at the top of orbit-loader.tsx for why. */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100dvh;
+  background: #020302;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+.loader-screen-leaving { opacity: 0; pointer-events: none; }
+
+.loader-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  user-select: none;
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: transparent;
+  -webkit-mask: repeating-linear-gradient(90deg, transparent 0, transparent 6px, black 7px, black 8px);
+  mask: repeating-linear-gradient(90deg, transparent 0, transparent 6px, black 7px, black 8px);
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+
+  background-image:
+    radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 50%),
+    radial-gradient(circle at 45% 45%, #52df8b 0%, transparent 45%),
+    radial-gradient(circle at 55% 55%, #22c55e 0%, transparent 45%),
+    radial-gradient(circle at 45% 55%, #16a34a 0%, transparent 45%),
+    radial-gradient(circle at 55% 45%, #065f46 0%, transparent 45%);
+
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0%, transparent 10%, black 25%);
+  mask: radial-gradient(circle at 50% 50%, transparent 0%, transparent 10%, black 25%);
+
+  /* Just a GPU compositing hint — NOT combined with transform-style:
+     preserve-3d or backface-visibility:hidden. That combo, nested inside a
+     parent using a plain 2D scale(), is a known trigger for mobile
+     Safari/Chrome to composite and paint a masked animated layer twice
+     during the transform — almost certainly the real cause of the beam
+     appearing twice on a real phone. Removing it, not layering more fixes
+     on top of it, is the actual fix. */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+
+  animation:
+    transform-animation 2.4s ease-in-out infinite alternate,
+    beam-fade-in 0.8s ease-out 0.1s forwards;
+}
+
+.loader-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-text {
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(167, 243, 195, 0.95);
+  white-space: nowrap;
+  opacity: 0;
+  animation: text-fade-in .5s ease-out .15s forwards, initializing-text 2.2s ease-in-out .65s infinite;
+}
+
+@keyframes transform-animation {
+  0% { transform: translateX(-55%) translateZ(0); }
+  100% { transform: translateX(55%) translateZ(0); }
+}
+
+@keyframes beam-fade-in { to { opacity: 1; } }
+@keyframes text-fade-in { to { opacity: .35; } }
+
+@keyframes initializing-text {
+  0%, 100% { opacity: .35; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .loader-wrapper { width: 155px; height: 155px; }
+  .loader-text { font-size: 15px; letter-spacing: 0.2em; }
+}
+
+@media (max-width: 380px) {
+  .loader-wrapper { width: 145px; height: 145px; }
+  .loader-text { font-size: 13px; letter-spacing: 0.18em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-screen { transition: none; }
+  .loader::after, .loader-text { animation: none; opacity: 1; }
+}
