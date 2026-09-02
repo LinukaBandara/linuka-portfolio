@@ -2,6 +2,7 @@
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
+import portfolioOverridesCss from "../portfolio-overrides.css?url";
 
 const APP_NAME = "Linuka Bandara";
 const TITLE = "Linuka Bandara — Software Engineer & Full-Stack Developer";
@@ -19,7 +20,7 @@ const personJsonLd = {
   jobTitle: "Software Engineer & Full-Stack Developer",
   description: DESCRIPTION,
   sameAs: [
-    "https://github.com/linuka7",
+    "https://github.com/LinukaBandara",
     "https://www.linkedin.com/in/linukabandara/",
     "https://www.instagram.com/_linu_ka",
   ],
@@ -95,6 +96,7 @@ export const Route = createRootRoute({
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: portfolioOverridesCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
     ],
