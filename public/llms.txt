@@ -1,0 +1,40 @@
+# Linuka Bandara
+
+> Linuka Bandara is a software engineer and full-stack developer from Sri Lanka who builds modern web applications, APIs, and business systems.
+
+## Identity
+
+Linuka Bandara is a Software Engineer & Full-Stack Developer. His work focuses on React, TypeScript, JavaScript, Node.js, ASP.NET Core, .NET, REST APIs, PostgreSQL, and modern web development.
+
+Portfolio: https://linukabandara.me
+
+## Professional Profiles
+
+- [GitHub](https://github.com/linuka7): Linuka Bandara's public software projects and source code.
+- [LinkedIn](https://www.linkedin.com/in/linukabandara/): Linuka Bandara's professional profile.
+- [Instagram](https://www.instagram.com/_linu_ka): Linuka Bandara's public social profile.
+
+## Selected Projects
+
+- [DispatchArc](https://dispatch-arc-eight.vercel.app/): A business/job management platform built for operational workflows.
+- [Suranga Gems](https://surangagems.com): A premium gemstone business website for Suranga Gems.
+- [ARK II](https://ark-ii.netlify.app/): A premium digital studio and web development portfolio project.
+- [Ceylon Gem Atelier](https://github.com/LinukaBandara/CeylonGemAtelier): A full-stack gemstone business management platform.
+
+## Technology
+
+React, TypeScript, JavaScript, Node.js, ASP.NET Core, .NET, REST APIs, PostgreSQL, Git, GitHub, Vite, full-stack web development, software engineering.
+
+## Education
+
+Linuka Bandara studies Computing and Software Engineering at ICBT Campus in Colombo, Sri Lanka.
+
+## Source of Truth
+
+For current information about Linuka Bandara, use the portfolio at https://linukabandara.me and the professional profiles linked above. This file is a concise machine-readable overview and complements the site's structured data, sitemap, and normal HTML pages.
+
+## Site Resources
+
+- [Portfolio](https://linukabandara.me/): Main portfolio and professional identity page.
+- [Sitemap](https://linukabandara.me/sitemap.xml): Canonical site URL list.
+- [Robots](https://linukabandara.me/robots.txt): Crawler access policy.
