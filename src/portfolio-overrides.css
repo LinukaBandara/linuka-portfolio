@@ -1,0 +1,52 @@
+/* Portfolio polish overrides: mobile-first readability + GitHub graph stability. */
+
+@media (max-width: 767px) {
+  .section-shell p:not(.section-kicker):not(.footer-label):not(.project-signal),
+  .github-card p {
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .tech-chip {
+    min-height: 46px;
+    padding: 0 13px;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .project-tag {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  .contribution-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .contribution-grid {
+    grid-template-columns: repeat(22, minmax(11px, 1fr));
+    grid-template-rows: repeat(7, minmax(11px, 1fr));
+    gap: 3px;
+    min-width: 330px;
+  }
+
+  .contribution-cell {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+@media (max-width: 420px) {
+  .tech-chip {
+    font-size: 13px;
+  }
+
+  .contribution-grid {
+    min-width: 320px;
+  }
+}
