@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Github } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
-const GITHUB_USERNAME = "linuka7";
+const GITHUB_USERNAME = "LinukaBandara";
 
 interface ContributionDay {
   level: number;
@@ -15,65 +15,51 @@ interface GithubStatsData {
   cells: ContributionDay[];
 }
 
+async function fetchJson<T>(url: string): Promise<T | null> {
+  const response = await fetch(url, { headers: { Accept: "application/json" } });
+  if (!response.ok) return null;
+  return response.json() as Promise<T>;
+}
+
 async function fetchGithubStats(): Promise<GithubStatsData> {
-  const [userRes, reposRes, contribRes] = await Promise.all([
-    fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),
-    fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`
-    ),
-    fetch(
+  const [user, repos, contribJson] = await Promise.all([
+    fetchJson<{ public_repos?: number }>(
+      `https://api.github.com/users/${GITHUB_USERNAME}`
+    ).catch(() => null),
+    fetchJson<Array<{ stargazers_count?: number }>>(
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`
+    ).catch(() => null),
+    fetchJson<{
+      contributions?: Array<{ date: string; count: number; level: number }>;
+    }>(
       `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`
-    ),
+    ).catch(() => null),
   ]);
 
-  const user = userRes.ok ? await userRes.json() : null;
-
-  const repos: Array<{ stargazers_count?: number }> = reposRes.ok
-    ? await reposRes.json()
-    : [];
-
-  const contribJson = contribRes.ok ? await contribRes.json() : null;
-
-  const stars = Array.isArray(repos)
-    ? repos.reduce(
-        (sum, repo) => sum + (repo.stargazers_count ?? 0),
-        0
-      )
-    : 0;
-
-  const rawDays: Array<{
-    date: string;
-    count: number;
-    level: number;
-  }> = Array.isArray(contribJson?.contributions)
+  const safeRepos = Array.isArray(repos) ? repos : [];
+  const rawDays = Array.isArray(contribJson?.contributions)
     ? contribJson.contributions
     : [];
 
-  const sorted = [...rawDays].sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
-
+  const sorted = [...rawDays].sort((a, b) => a.date.localeCompare(b.date));
   const recent = sorted.slice(-154);
-
-  const cells: ContributionDay[] = recent.map((day) => ({
-    level: Number.isFinite(day.level) ? day.level : 0,
-  }));
-
-  const totalContributions = sorted.reduce(
-    (sum, day) => sum + (day.count ?? 0),
-    0
-  );
 
   return {
     repos:
       typeof user?.public_repos === "number"
         ? user.public_repos
-        : Array.isArray(repos)
-          ? repos.length
-          : 0,
-    stars,
-    totalContributions,
-    cells,
+        : safeRepos.length,
+    stars: safeRepos.reduce(
+      (sum, repo) => sum + (repo.stargazers_count ?? 0),
+      0
+    ),
+    totalContributions: sorted.reduce(
+      (sum, day) => sum + (day.count ?? 0),
+      0
+    ),
+    cells: recent.map((day) => ({
+      level: Number.isFinite(day.level) ? Math.max(0, Math.min(4, day.level)) : 0,
+    })),
   };
 }
 
@@ -86,14 +72,12 @@ export function GithubStats() {
 
     fetchGithubStats()
       .then((result) => {
-        if (active) {
-          setData(result);
-        }
+        if (!active) return;
+        setData(result);
+        setFailed(result.cells.length === 0);
       })
       .catch(() => {
-        if (active) {
-          setFailed(true);
-        }
+        if (active) setFailed(true);
       });
 
     return () => {
@@ -121,9 +105,10 @@ export function GithubStats() {
         <p className="section-kicker">My GitHub stats</p>
 
         <h2 className="section-title">
-  <span className="block">Commits, projects</span>
-  <span className="block">and activity.</span>
-</h2>
+          <span className="block">Commits, projects</span>
+          <span className="block">and activity.</span>
+        </h2>
+
         <Reveal
           as="a"
           href={`https://github.com/${GITHUB_USERNAME}`}
@@ -142,10 +127,7 @@ export function GithubStats() {
                   <p className="font-display text-lg font-semibold text-white">
                     @{GITHUB_USERNAME}
                   </p>
-
-                  <p className="text-xs text-zinc-600">
-                    GitHub profile
-                  </p>
+                  <p className="text-xs text-zinc-600">GitHub profile</p>
                 </div>
               </div>
 
@@ -159,7 +141,6 @@ export function GithubStats() {
                   <strong className="block font-display text-2xl text-white">
                     {data ? data.repos : "—"}
                   </strong>
-
                   <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-zinc-600">
                     Repos
                   </span>
@@ -169,37 +150,35 @@ export function GithubStats() {
                   <strong className="block font-display text-2xl text-white">
                     {data ? data.stars : "—"}
                   </strong>
-
                   <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-zinc-600">
                     Stars
                   </span>
                 </div>
 
                 <div>
-                  <ArrowUpRight
-                    className="mt-1 text-zinc-600"
-                    size={18}
-                  />
+                  <ArrowUpRight className="mt-1 text-zinc-600" size={18} />
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="mb-3 flex justify-between font-mono text-[8px] uppercase tracking-[0.12em] text-zinc-700">
+              <div className="mb-3 flex justify-between gap-4 font-mono text-[8px] uppercase tracking-[0.12em] text-zinc-700">
                 <span>Contribution graph</span>
-                <span>{statusLabel}</span>
+                <span className="text-right">{statusLabel}</span>
               </div>
 
-              <div
-                className="contribution-grid"
-                aria-label="GitHub contribution activity, most recent 22 weeks"
-              >
-                {cells.map((cell, index) => (
-                  <span
-                    key={index}
-                    className={`contribution-cell level-${cell.level}`}
-                  />
-                ))}
+              <div className="contribution-scroll" aria-hidden="true">
+                <div
+                  className="contribution-grid"
+                  aria-label="GitHub contribution activity, most recent 22 weeks"
+                >
+                  {cells.map((cell, index) => (
+                    <span
+                      key={index}
+                      className={`contribution-cell level-${cell.level}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
