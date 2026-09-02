@@ -7,7 +7,7 @@ const APP_NAME = "Linuka Bandara";
 const TITLE = "Linuka Bandara — Software Engineer & Full-Stack Developer";
 const DESCRIPTION =
   "Linuka Bandara is a software engineer and full-stack developer from Sri Lanka, building modern web applications, APIs and business systems with React, TypeScript, .NET and Node.js.";
-const SITE_URL = "https://linukabandara.vercel.app";
+const SITE_URL = "https://linukabandara.me";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
 
 const personJsonLd = {
@@ -65,8 +65,6 @@ export const Route = createRootRoute({
       { name: "author", content: APP_NAME },
       { name: "robots", content: "index, follow" },
       { name: "theme-color", content: "#080808" },
-
-      // Open Graph
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: APP_NAME },
       { property: "og:title", content: TITLE },
@@ -77,8 +75,6 @@ export const Route = createRootRoute({
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:locale", content: "en_US" },
-
-      // Twitter / X
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
