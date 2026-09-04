@@ -8,7 +8,7 @@ Included:
 - Typing effect under the name cycling through roles
 - About + technology grid
 - Education section
-- Featured projects populated from the public @linuka7 GitHub profile
+- Featured projects populated from the public @LinukaBandara GitHub profile
 - Live and source links for DispatchArc, BGS AgriStock, Suranga Gems and ARK II
 - GitHub-style activity section
 - Responsive mobile navigation
