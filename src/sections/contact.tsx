@@ -20,7 +20,7 @@ export function Contact() {
             <a href={whatsappUrl} target="_blank" rel="noreferrer" className="whatsapp-pill"><WhatsappIcon size={15} /> WhatsApp</a>
           </div>
           <div className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/[0.06] pt-6 font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-600">
-            <a href="https://github.com/linuka7" target="_blank" rel="noreferrer" className="social-link"><Github size={14} /> GitHub</a>
+            <a href="https://github.com/LinukaBandara" target="_blank" rel="noreferrer" className="social-link"><Github size={14} /> GitHub</a>
             <a href="https://www.linkedin.com/in/linukabandara/" target="_blank" rel="noreferrer" className="social-link"><Linkedin size={14} /> LinkedIn</a>
             <a href={instagramUrl} target="_blank" rel="noreferrer" className="social-link"><Instagram size={14} /> Instagram</a>
           </div>
