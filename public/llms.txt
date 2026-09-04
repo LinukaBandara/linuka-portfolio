@@ -10,7 +10,7 @@ Portfolio: https://linukabandara.me
 
 ## Professional Profiles
 
-- [GitHub](https://github.com/linuka7): Linuka Bandara's public software projects and source code.
+- [GitHub](https://github.com/LinukaBandara): Linuka Bandara's public software projects and source code.
 - [LinkedIn](https://www.linkedin.com/in/linukabandara/): Linuka Bandara's professional profile.
 - [Instagram](https://www.instagram.com/_linu_ka): Linuka Bandara's public social profile.
 
