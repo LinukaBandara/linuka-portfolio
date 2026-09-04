@@ -135,7 +135,7 @@ export function Projects() {
 
         <div className="mt-10 flex justify-center">
           <a
-            href="https://github.com/linuka7?tab=repositories"
+            href="https://github.com/LinukaBandara?tab=repositories"
             target="_blank"
             rel="noreferrer"
             className="outline-pill"
