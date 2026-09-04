@@ -25,7 +25,7 @@ export function About() {
               <p>I&apos;m Linuka, a software engineering student focused on modern web applications, REST APIs, business systems and responsive digital experiences.</p>
               <p>I like taking an idea from architecture and databases through to the final interface — keeping the workflow practical, the code maintainable and the visual result polished.</p>
             </div>
-            <a href="https://github.com/linuka7" target="_blank" rel="noreferrer" className="outline-pill mt-9">Explore my code</a>
+            <a href="https://github.com/LinukaBandara" target="_blank" rel="noreferrer" className="outline-pill mt-9">Explore my code</a>
           </div>
 
           <div>
