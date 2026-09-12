@@ -19,14 +19,14 @@ export function Projects() {
             <p className="section-kicker">Featured projects</p>
 
             <h2 className="section-title">
-  <span className="block">Systems with a</span>
-  <span className="block">visual signature.</span>
-</h2>
+              <span className="block">Systems with a</span>
+              <span className="block">visual signature.</span>
+            </h2>
           </div>
 
           <p className="max-w-sm text-sm leading-6 text-zinc-600">
-            Real interfaces, real project screenshots — presented as
-            futuristic product frames instead of generic stock mockups.
+            Websites, interfaces and software products presented as focused
+            case studies — from client work to full-stack systems.
           </p>
         </div>
 
@@ -55,14 +55,14 @@ export function Projects() {
 
                   <img
                     src={project.image}
-                    alt={`${project.name} website screenshot`}
+                    alt={`${project.name} project preview`}
                     className="project-screenshot"
                   />
                 </div>
 
                 <span className="project-number">{project.id}</span>
 
-                <span className="project-signal">LIVE BUILD</span>
+                <span className="project-signal">PROJECT BUILD</span>
               </div>
 
               <div className="p-5 md:p-6">
