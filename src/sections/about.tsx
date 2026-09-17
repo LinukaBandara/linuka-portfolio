@@ -23,7 +23,7 @@ export function About() {
 </h2>
             <div className="mt-8 max-w-xl space-y-5 text-sm leading-7 text-zinc-500 md:text-[15px]">
               <p>I&apos;m Linuka, a software engineering student focused on modern web applications, REST APIs, business systems and responsive digital experiences.</p>
-              <p>I like taking an idea from architecture and databases through to the final interface — keeping the workflow practical, the code maintainable and the visual result polished.</p>
+              <p>I like taking an idea from architecture and databases through to the final interface, keeping the workflow practical, the code maintainable and the visual result polished.</p>
             </div>
             <a href="https://github.com/LinukaBandara" target="_blank" rel="noreferrer" className="outline-pill mt-9">Explore my code</a>
           </div>
