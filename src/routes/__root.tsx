@@ -5,7 +5,7 @@ import appCss from "../styles.css?url";
 import portfolioOverridesCss from "../portfolio-overrides.css?url";
 
 const APP_NAME = "Linuka Bandara";
-const TITLE = "Linuka Bandara — Software Engineer & Full-Stack Developer";
+const TITLE = "Linuka Bandara | Software Engineer & Full-Stack Developer";
 const DESCRIPTION =
   "Linuka Bandara is a software engineer and full-stack developer from Sri Lanka, building modern web applications, APIs and business systems with React, TypeScript, .NET and Node.js.";
 const SITE_URL = "https://linukabandara.me";
@@ -72,7 +72,7 @@ export const Route = createRootRoute({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE_URL },
       { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:alt", content: "Linuka Bandara — Software Engineer & Full-Stack Developer" },
+      { property: "og:image:alt", content: "Linuka Bandara | Software Engineer & Full-Stack Developer" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:locale", content: "en_US" },
@@ -80,7 +80,7 @@ export const Route = createRootRoute({
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:image:alt", content: "Linuka Bandara — Software Engineer & Full-Stack Developer" },
+      { name: "twitter:image:alt", content: "Linuka Bandara | Software Engineer & Full-Stack Developer" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
