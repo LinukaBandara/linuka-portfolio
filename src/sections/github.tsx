@@ -139,7 +139,7 @@ export function GithubStats() {
               <div className="mt-6 flex gap-8">
                 <div>
                   <strong className="block font-display text-2xl text-white">
-                    {data ? data.repos : "—"}
+                    {data ? data.repos : "-"}
                   </strong>
                   <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-zinc-600">
                     Repos
@@ -148,7 +148,7 @@ export function GithubStats() {
 
                 <div>
                   <strong className="block font-display text-2xl text-white">
-                    {data ? data.stars : "—"}
+                    {data ? data.stars : "-"}
                   </strong>
                   <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-zinc-600">
                     Stars
