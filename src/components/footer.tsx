@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/[0.06] pb-10 md:grid-cols-[1.3fr_.7fr_.7fr]">
           <div>
             <p className="footer-mark">LB<span>/26</span></p>
-            <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-600">Software engineering, full-stack development and interface craft — built from Sri Lanka for the web.</p>
+            <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-600">Software engineering, full-stack development and interface craft, built from Sri Lanka for the web.</p>
           </div>
           <div>
             <p className="footer-label">Navigate</p>
