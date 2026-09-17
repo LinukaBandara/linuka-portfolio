@@ -14,7 +14,7 @@ export function Contact() {
           <div className="contact-radar" aria-hidden="true"><span /><span /><span /></div>
           <p className="section-kicker">Open channel / 05</p>
           <h2 className="contact-title">Have something<br /><span>worth building?</span></h2>
-          <p className="mt-7 max-w-xl text-sm leading-7 text-zinc-500">For freelance work, collaborations, internships or an idea that needs a thoughtful build — reach out directly.</p>
+          <p className="mt-7 max-w-xl text-sm leading-7 text-zinc-500">For freelance work, collaborations, internships or an idea that needs a thoughtful build, reach out directly.</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a href="mailto:Linukaipad@gmail.com" className="primary-pill"><Mail size={14} /> Email me</a>
             <a href={whatsappUrl} target="_blank" rel="noreferrer" className="whatsapp-pill"><WhatsappIcon size={15} /> WhatsApp</a>
