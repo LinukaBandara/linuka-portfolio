@@ -48,7 +48,7 @@ export const featuredProjects: FeaturedProject[] = [
     id: "04",
     name: "ARK II",
     tagline: "Independent digital studio",
-    description: "The studio platform behind this body of work — a self-directed experiment in typography-led layout, scroll-driven motion, responsive systems and premium digital presentation.",
+    description: "The studio platform behind this body of work. A self-directed experiment in typography-led layout, scroll-driven motion, responsive systems and premium digital presentation.",
     tech: ["React", "Vite", "Motion", "Lenis", "JavaScript"],
     live: "https://ark-ii.studio",
     repo: "https://github.com/LinukaBandara/ark-ii",
