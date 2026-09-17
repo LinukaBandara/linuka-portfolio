@@ -36,8 +36,8 @@ export function Hero() {
         </div>
 
         <p className="hero-in hero-in-3 mt-6 max-w-2xl text-pretty text-sm leading-7 text-zinc-500 md:text-base">
-          I build practical full-stack products and expressive web experiences
-          — combining backend engineering, clean interfaces and a strong eye
+          I build practical full-stack products and expressive web experiences,
+          combining backend engineering, clean interfaces and a strong eye
           for detail.
         </p>
 
