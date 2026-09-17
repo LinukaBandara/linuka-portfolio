@@ -11,7 +11,7 @@ export function Projects() {
       <div className="mx-auto max-w-[1120px]">
         <div className="section-index-row">
           <span>03</span>
-          <span>Selected work / 2025—2026</span>
+          <span>Selected work / 2025-2026</span>
         </div>
 
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -26,7 +26,7 @@ export function Projects() {
 
           <p className="max-w-sm text-sm leading-6 text-zinc-600">
             Websites, interfaces and software products presented as focused
-            case studies — from client work to full-stack systems.
+            case studies, from client work to full-stack systems.
           </p>
         </div>
 
