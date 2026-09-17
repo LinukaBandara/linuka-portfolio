@@ -25,7 +25,7 @@ export function Education() {
                 <GraduationCap size={22} />
               </div>
               <div>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-zinc-600">2025 — Present</p>
+                <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-zinc-600">2025 - Present</p>
                 <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-white md:text-2xl">
                   Higher Diploma in Computing &amp; Software Engineering
                 </h3>
