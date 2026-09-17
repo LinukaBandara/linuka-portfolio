@@ -5,7 +5,7 @@ export function Skills() {
     <section id="stack" className="scroll-mt-nav border-b border-line py-section">
       <div className="mx-auto w-content">
         <p className="mb-7 font-mono text-micro uppercase tracking-widest text-faint">
-          03 — Stack
+          03 / Stack
         </p>
         <h2 className="text-balance font-display text-display font-semibold tracking-display text-fg">
           Tools I
