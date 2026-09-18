@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://linukabandara.me/sitemap.xml
+Sitemap: https://www.linukabandara.me/sitemap.xml
