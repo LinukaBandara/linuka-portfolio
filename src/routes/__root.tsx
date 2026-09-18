@@ -1,4 +1,4 @@
-﻿import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
@@ -8,7 +8,7 @@ const APP_NAME = "Linuka Bandara";
 const TITLE = "Linuka Bandara | Software Engineer & Full-Stack Developer";
 const DESCRIPTION =
   "Linuka Bandara is a software engineer and full-stack developer from Sri Lanka, building modern web applications, APIs and business systems with React, TypeScript, .NET and Node.js.";
-const SITE_URL = "https://linukabandara.me";
+const SITE_URL = "https://www.linukabandara.me";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
 
 const personJsonLd = {
