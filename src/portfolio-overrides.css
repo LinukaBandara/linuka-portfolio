@@ -10,7 +10,7 @@
   .tech-chip {
     min-height: 46px;
     padding: 0 13px;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 1.2;
   }
 
@@ -43,7 +43,7 @@
 
 @media (max-width: 420px) {
   .tech-chip {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .contribution-grid {
