@@ -3,19 +3,19 @@
 @media (max-width: 767px) {
   .section-shell p:not(.section-kicker):not(.footer-label):not(.project-signal),
   .github-card p {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.75;
   }
 
   .tech-chip {
     min-height: 46px;
     padding: 0 13px;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.2;
   }
 
   .project-tag {
-    font-size: 11px;
+    font-size: 12px;
     padding: 7px 10px;
   }
 
@@ -43,7 +43,7 @@
 
 @media (max-width: 420px) {
   .tech-chip {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .contribution-grid {
