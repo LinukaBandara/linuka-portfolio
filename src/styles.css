@@ -188,3 +188,38 @@
 @media (max-width:640px) { .loader-wrapper{width:155px;height:155px} .loader-text{font-size:17px;letter-spacing:.2em} }
 @media (max-width:380px) { .loader-wrapper{width:145px;height:145px} .loader-text{font-size:15px;letter-spacing:.18em} }
 @media (prefers-reduced-motion:reduce) { .loader-screen{transition:none} .loader::after,.loader-text{animation:none;opacity:1} }
+
+
+/* Viewport safety — keep every section inside the viewport without changing the design. */
+html, body { width:100%; max-width:100%; overflow-x:hidden; }
+*, *::before, *::after { box-sizing:border-box; }
+img, svg, video, canvas { max-width:100%; }
+.hero-shell, .section-shell, .contact-section, .footer-shell { width:100%; max-width:100%; }
+.hero-title, .section-title, .contact-title { max-width:100%; overflow-wrap:anywhere; }
+.nav-shell { width:calc(100% - 24px); max-width:1180px; }
+.hero-status { max-width:100%; }
+.project-card, .education-card, .testimonial-card, .github-card, .contact-panel, .hero-module { min-width:0; max-width:100%; }
+.contribution-grid { width:100%; max-width:100%; min-width:0; }
+.project-screenshot { display:block; max-width:100%; }
+.footer-shell { overflow:hidden; }
+
+@media (max-width:767px) {
+  :root { --spacing-page:16px; }
+  .hero-shell { padding-left:16px; padding-right:16px; }
+  .hero-title { font-size:clamp(3rem,18vw,6.9rem); line-height:.84; overflow-wrap:anywhere; }
+  .hero-status { font-size:9px; letter-spacing:.1em; white-space:normal; }
+  .section-shell { padding-left:16px; padding-right:16px; }
+  .section-index-row { flex-wrap:wrap; }
+  .contact-panel { padding-left:clamp(1rem,5vw,2rem); padding-right:clamp(1rem,5vw,2rem); }
+  .contact-title { font-size:clamp(3rem,15vw,6rem); overflow-wrap:anywhere; }
+}
+
+@media (max-width:420px) {
+  .hero-title { font-size:clamp(2.6rem,17vw,5.2rem); }
+  .typing-line { max-width:calc(100vw - 32px); }
+  .loader-text { max-width:calc(100vw - 32px); }
+}
+
+@media (min-width:768px) {
+  .hero-title, .section-title, .contact-title { overflow-wrap:normal; }
+}
