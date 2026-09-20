@@ -30,8 +30,8 @@ export function About() {
 
           <div>
             <div className="mb-4 flex items-end justify-between gap-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-600">Current toolkit</p>
-              <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-emerald-400/70">{tech.length} technologies</span>
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Current toolkit</p>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-400/70">{tech.length} technologies</span>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">
               {tech.map((item, i) => (
