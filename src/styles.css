@@ -58,7 +58,7 @@
 .section-title { margin:0; font-family:var(--font-display); font-size:clamp(2.55rem,5.8vw,5.1rem); font-weight:700; line-height:.94; letter-spacing:-.062em; color:#f7f7f5; }
 .section-index-row { display:flex; justify-content:space-between; gap:20px; margin-bottom:40px; border-top:1px solid rgba(255,255,255,.05); padding-top:12px; font-family:var(--font-mono); font-size:7px; text-transform:uppercase; letter-spacing:.16em; color:#27272a; }
 
-.tech-chip { display:flex; min-height:46px; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.065); border-radius:9px; background:rgba(255,255,255,.015); padding:0 13px; font-family:var(--font-mono); font-size:8px; letter-spacing:.025em; color:#71717a; transition:.22s ease; }
+.tech-chip { display:flex; min-height:46px; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.065); border-radius:9px; background:rgba(255,255,255,.015); padding:0 13px; font-family:var(--font-mono); font-size:10px; letter-spacing:.025em; color:#71717a; transition:.22s ease; }
 .tech-chip:hover { border-color:rgba(82,223,139,.2); background:rgba(82,223,139,.03); color:#d4d4d8; transform:translateY(-2px); }
 .tech-dot { width:5px; height:5px; flex:none; border-radius:50%; background:#52df8b; opacity:.55; }
 
@@ -136,7 +136,7 @@
   .hero-title { font-size:clamp(2.6rem,17vw,5.2rem); }
   .section-title { font-size:clamp(2.35rem,12vw,3.4rem); }
   .contact-title { font-size:clamp(3rem,15vw,4.4rem); }
-  .tech-chip { min-height:43px; padding:0 10px; font-size:7px; }
+  .tech-chip { min-height:43px; padding:0 10px; font-size:14px; }
   .project-number { right:12px; top:11px; }
   .project-signal { left:12px; bottom:10px; }
 }
